@@ -1,0 +1,14 @@
+.add_quote{
+    border: 3px solid rgb(247, 238, 113);
+    padding: 30px;
+}
+
+input{
+    margin: 5px;
+}
+
+.error{
+    color: red;
+    margin: 5px;
+    
+}

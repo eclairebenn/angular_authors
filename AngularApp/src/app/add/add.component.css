@@ -1,0 +1,12 @@
+.add_form{
+    border: 3px solid rgb(86, 151, 86);
+    padding: 30px;
+}
+
+input{
+    margin: 5px;
+}
+
+.error{
+    color: red;
+}

@@ -1,0 +1,37 @@
+<div class="quote_list" *ngIf="found">
+  <h4 class="links"><a href="/">Home</a></h4>
+  <h4 class="links"><a [routerLink]="['/write', author._id]">Add a quote</a></h4>
+  <h3>Quotes by {{author.name}}</h3>
+  <table class="table">
+    <tr>
+      <th>Quote</th>
+      <th>Votes</th>
+      <th>Created At</th>
+      <th>Actions Available</th>
+    </tr>
+    <tr *ngFor="let quote of author.quotes">
+      <td>"{{quote.quote}}"</td>
+      <td>{{quote.vote}}</td>
+      <td>{{quote.createdAt | date : "MMMM d yyyy h:mm a"}}</td>
+      <td>
+        <button (click)="updateQuote(quote, 1)">Vote Up</button>
+        <button (click)="updateQuote(quote, -1)">Vote Down</button>
+        <button (click)="deleteQuote(quote)">Delete</button>
+      </td>
+    </tr>
+  </table>
+</div>
+<div *ngIf="found == false">
+  <h3>We're sorry, that author could not be found in our database. Would you like to add it?</h3>
+  <h3><a href="/new">Add new author</a></h3>
+</div>
+
+  <!-- <div class="edit_box">
+    <form (submit)="editAuthor()" class="postForm">
+      <h3>Name : </h3>
+      <input type="text" name="author.name" [(ngModel)]="author.name" [placeholder]="author.name"/>
+      <button>Cancel</button>
+      <input type="submit" value="Submit">
+    </form>
+    <h4 *ngIf="message">{{message}}</h4>
+  </div> -->

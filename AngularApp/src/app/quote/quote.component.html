@@ -1,0 +1,34 @@
+<div class="add_quote">
+  <h4><a href="/">Home</a></h4>
+  <h3>Provide a quote by {{author.name}} </h3>
+  <div class="add_box">
+    <form class="formX" (submit)="addQuote()" #formData="ngForm">
+      <h3>Quote : </h3>
+      <input 
+        type="text" 
+        name="quote.quote"
+        required
+        minlength="4"
+        [(ngModel)]="quote.quote"
+        #quoted="ngModel"/>
+      <br>
+      <div *ngIf="quoted.touched && quoted.invalid">
+        <h6 *ngIf="quoted.errors['required']" class="error">
+          Quote is required.
+        </h6>
+        <h6 *ngIf="quoted.errors['minlength']" class="error">
+          Quote must be at least 4 characters.
+        </h6>
+      
+      </div>
+      <button [disabled]="formData.invalid" type="submit">Submit</button>
+      <button [routerLink]="['/quotes', author._id]">Cancel</button>
+      
+    </form>
+    <div *ngIf="message">
+      <h6 class="error" *ngFor="let m of message">{{m}}</h6>
+    </div>
+  </div>  
+</div>
+
+

@@ -1,0 +1,34 @@
+<div class="add_form">
+  <h3><a href="/">Home</a></h3>
+  <h3>Add a new author: </h3>
+  <div class="add_box">
+    <form (submit)="addAuthor()" #formData="ngForm">
+      <h4>Name : </h4>
+      <input 
+        type="text" 
+        name="author.name"
+        required
+        minlength="4"
+        [(ngModel)]="author.name"
+        #authName="ngModel"
+      />
+      <br>
+      <div *ngIf="authName.touched && authName.invalid && authName.value.length > 0">
+          <h6 *ngIf="authName.errors['required']" class="error">
+            Author name is required.
+          </h6>
+          <h6 *ngIf="authName.errors['minlength']" class="error">
+            Author name must be at least 4 characters.
+          </h6>
+        
+      </div>
+      <input [disabled]="formData.invalid" type="submit" value="Submit">
+      <button [routerLink]="['/']">Cancel</button>
+    </form>
+    
+    <div *ngIf="message">
+        <h6 class="error" *ngFor="let m of message">{{m}}</h6>
+    </div>
+  </div>  
+</div>
+

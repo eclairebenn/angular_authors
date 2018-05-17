@@ -1,0 +1,9 @@
+.quote_list{
+    border: 3px solid rgb(240, 144, 160);
+    padding: 30px;
+}
+
+.links{
+    display: inline-block;
+    margin-right: 20px;
+}
